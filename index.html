@@ -8,7 +8,25 @@
 </head>
 
 <body>
-    <h1>Hi!</h1>
+
+    <section>
+
+        <label for="tempInput">Enter Temperature To Be Converted</label>
+        <input type="text" class="temp-input" id="tempInput" name="tempInput">
+
+        <div class="temp-radio-container" id="tempRadioContainer">
+            <label for="celsiusRadio">Convert to Celsius</label>
+            <input type="radio" name="scaleRadio" id="celsiusRadio" value="C">
+            <label for="fahrenheitRadio">Convert to Fahrenheit</label>
+            <input type="radio" name="scaleRadio" id="fahrenheitRadio" value="F">
+        </div>
+        <div class="button-container" id="buttonContainer">
+            <button id="convertButton">Convert Temperature</button>
+        </div>
+    </section>
+    <section class="temp-output" id="tempOutput">
+
+    </section>
     <script src="./main.js"></script>
 </body>
 
