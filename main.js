@@ -24,23 +24,18 @@ const domStringBuilder = (finalTemperature, unit) => {
     let domString = '';
     let answerColorClass
     if (unit === 'C' && finalTemperature >= 32) {
-answerColorClass = 'red';
-    }
-    else if (unit === 'F' && finalTemperature >= 90) {
         answerColorClass = 'red';
-            }
-            else if (unit === 'C' && finalTemperature <= 0) {
-                answerColorClass = 'blue';
-                    }
-                    else if (unit === 'F' && finalTemperature <= 32) {
-                        answerColorClass = 'blue';
-                            }
-                            else if (unit === 'C' && finalTemperature > 0 && finalTemperature < 32) {
-                                answerColorClass = 'green';
-                                    }
-                                    else if (unit === 'F' && finalTemperature > 32 && finalTemperature < 90) {
-                                        answerColorClass = 'green';
-                                            }
+    } else if (unit === 'F' && finalTemperature >= 90) {
+        answerColorClass = 'red';
+    } else if (unit === 'C' && finalTemperature <= 0) {
+        answerColorClass = 'blue';
+    } else if (unit === 'F' && finalTemperature <= 32) {
+        answerColorClass = 'blue';
+    } else if (unit === 'C' && finalTemperature > 0 && finalTemperature < 32) {
+        answerColorClass = 'green';
+    } else if (unit === 'F' && finalTemperature > 32 && finalTemperature < 90) {
+        answerColorClass = 'green';
+    }
 
     domString += `<h2 class='${answerColorClass}'>${finalTemperature}${unit}</h2>`;
     printToDom('tempOutput', domString);
