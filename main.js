@@ -22,7 +22,27 @@ const printToDom = (divId, textToPrint) => {
 //function which passes in two values and uses them to build an HTML string and prints it to the DOM by calling printToDom funcion
 const domStringBuilder = (finalTemperature, unit) => {
     let domString = '';
-    domString += `<h2>${finalTemperature}${unit}</h2>`;
+    let answerColorClass
+    if (unit === 'C' && finalTemperature >= 32) {
+answerColorClass = 'red';
+    }
+    else if (unit === 'F' && finalTemperature >= 90) {
+        answerColorClass = 'red';
+            }
+            else if (unit === 'C' && finalTemperature <= 0) {
+                answerColorClass = 'blue';
+                    }
+                    else if (unit === 'F' && finalTemperature <= 32) {
+                        answerColorClass = 'blue';
+                            }
+                            else if (unit === 'C' && finalTemperature > 0 && finalTemperature < 32) {
+                                answerColorClass = 'green';
+                                    }
+                                    else if (unit === 'F' && finalTemperature > 32 && finalTemperature < 90) {
+                                        answerColorClass = 'green';
+                                            }
+
+    domString += `<h2 class='${answerColorClass}'>${finalTemperature}${unit}</h2>`;
     printToDom('tempOutput', domString);
 };
 
