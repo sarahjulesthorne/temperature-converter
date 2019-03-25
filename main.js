@@ -1,11 +1,13 @@
+//function which converts the temperature input's value from Fahrenheit to Celsius, finds the value of the checked radio button, and passes the converted temperature and the radio button's value to the domStringBuilder function, which toC calls
 const toC = (temp) => {
-    let convertedTemp = ((temp - 32) / 1.8);
+    let convertedTemp = ((temp - 32) / 1.8).toFixed(1);
     let radioValue = document.querySelector('input[type = "radio"]:checked').value;
     domStringBuilder(convertedTemp, radioValue);
 };
 
+//function which converts the temperature input's value from Celsius to Fahrenheit, finds the value of the checked radio button, and passes the converted temperature and the radio button's value to the domStringBuilder function, which toF calls
 const toF = (temp) => {
-    let convertedTemp = ((temp * 1.8) + 32);
+    let convertedTemp = ((temp * 1.8) + 32).toFixed(1);
     let radioValue = document.querySelector('input[type = "radio"]:checked').value;
     domStringBuilder(convertedTemp, radioValue);
 };
@@ -17,14 +19,15 @@ const printToDom = (divId, textToPrint) => {
     selectedDiv.innerHTML = textToPrint;
 };
 
-//function which builds HTML string and prints it to the DOM by calling printToDom funcion
-
+//function which passes in two values and uses them to build an HTML string and prints it to the DOM by calling printToDom funcion
 const domStringBuilder = (finalTemperature, unit) => {
     let domString = '';
     domString += `<h2>${finalTemperature}${unit}</h2>`;
     printToDom('tempOutput', domString);
 };
 
+//function finds the value of the selected input and passes it into the called function
+//function calls either toC or toF, depending on which radio button is selected
 const determineConverter = (event) => {
     let tempInputValue = document.getElementById('tempInput').value;
     if (document.querySelector('input[type = "radio"]:checked').value === 'C') {
@@ -34,8 +37,14 @@ const determineConverter = (event) => {
     }
 };
 
+const clear = () => {
+    document.getElementById('tempInput').value = '';
+    document.getElementById('tempOutput').innerHTML = '';
+};
+
 const buttonListener = () => {
     document.getElementById('convertButton').addEventListener('click', determineConverter);
+    document.getElementById('clearButton').addEventListener('click', clear);
 };
 
 const init = () => {
