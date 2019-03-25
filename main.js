@@ -60,6 +60,11 @@ const clear = () => {
 const buttonListener = () => {
     document.getElementById('convertButton').addEventListener('click', determineConverter);
     document.getElementById('clearButton').addEventListener('click', clear);
+    document.getElementById('tempInput').addEventListener('keyup', (event) => {
+        if (event.code === 'Enter') {
+            determineConverter();
+        }
+    })
 };
 
 const init = () => {
