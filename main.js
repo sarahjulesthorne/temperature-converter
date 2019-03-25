@@ -1,12 +1,13 @@
-const tempInputValue = document.getElementById('tempInput').value;
-const radioValue = document.querySelector('input[type="radio"]:checked').value;
-
 const toC = (temp) => {
-return (temp - 32) / 1.8;
+    let convertedTemp = ((temp - 32) / 1.8);
+    let radioValue = document.querySelector('input[type = "radio"]:checked').value;
+    domStringBuilder(convertedTemp, radioValue);
 };
 
 const toF = (temp) => {
-return (temp * 1.8) + 32;
+    let convertedTemp = ((temp * 1.8) + 32);
+    let radioValue = document.querySelector('input[type = "radio"]:checked').value;
+    domStringBuilder(convertedTemp, radioValue);
 };
 
 
@@ -18,22 +19,19 @@ const printToDom = (divId, textToPrint) => {
 
 //function which builds HTML string and prints it to the DOM by calling printToDom funcion
 
-const domStringBuilder = () => {
+const domStringBuilder = (finalTemperature, unit) => {
     let domString = '';
-    domString += document.getElementById('tempInput').value;
+    domString += `<h2>${finalTemperature}${unit}</h2>`;
     printToDom('tempOutput', domString);
 };
 
 const determineConverter = (event) => {
-    domStringBuilder();
-    if (radioValue === 'C') {
-toC();
+    let tempInputValue = document.getElementById('tempInput').value;
+    if (document.querySelector('input[type = "radio"]:checked').value === 'C') {
+        toC(tempInputValue);
+    } else {
+        toF(tempInputValue);
     }
-    else {
-        toF();
-    }
-
-    console.log(document.getElementById('tempInput').value);
 };
 
 const buttonListener = () => {
