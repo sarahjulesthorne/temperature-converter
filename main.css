@@ -2,6 +2,14 @@ body {
     background-color: lightblue;
 }
 
+/* Styles which center the content in a column on the page */
+.container {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+}
+
+/* Styles for the answers' colors */
 .red {
     color: red;
 }
