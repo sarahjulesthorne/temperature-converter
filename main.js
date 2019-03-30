@@ -1,3 +1,11 @@
+/*This project is a temperature converter application.
+The application takes the value of the inputted temperature and passes it into one of two convert functions.
+If the Fahrenheit radio button is selected, the Convert button calls toF, which converts the temperature from Celsius to Fahrenheit
+If the Celsius radio button is selected, the toC function is called by the Convert button, and the temperature is converted to Celsius
+The temperature is then passed into a dom string builder function, along with the value of the radio button that is selected, and the function prints a level 2 heading to the dom with the final temperature
+The dom string builder uses conditionals to change the class of the final temperature output, and the CSS changes the color of that output, depending on the range of the temperature's numeric value and scale
+When the Clear button ispressed, the input's value and the output's string are both reset to empty strings
+Event listeners call the appropriate button click function when either the Convert or the Clear button are pressed*/
 //function which converts the temperature input's value from Fahrenheit to Celsius, finds the value of the checked radio button, and passes the converted temperature and the radio button's value to the domStringBuilder function, which toC calls
 const toC = (temp) => {
     let convertedTemp = ((temp - 32) / 1.8).toFixed(1);
@@ -11,7 +19,6 @@ const toF = (temp) => {
     let radioValue = document.querySelector('input[type = "radio"]:checked').value;
     domStringBuilder(convertedTemp, radioValue);
 };
-
 
 //print function which selects an element on the HTML page by its id and sets that element's element to a designated variable
 const printToDom = (divId, textToPrint) => {
@@ -51,12 +58,12 @@ const determineConverter = (event) => {
         toF(tempInputValue);
     }
 };
-
+//function which sets the value of the tempInput and tempOutput to empty strings
 const clear = () => {
     document.getElementById('tempInput').value = '';
     document.getElementById('tempOutput').innerHTML = '';
 };
-
+//function which adds event listeners to the Convert and Clear buttons, and which adds an event listener to the "enter" keyup event in the tempInput div
 const buttonListener = () => {
     document.getElementById('convertButton').addEventListener('click', determineConverter);
     document.getElementById('clearButton').addEventListener('click', clear);
